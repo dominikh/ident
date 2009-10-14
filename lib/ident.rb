@@ -35,8 +35,10 @@ class Ident
       # the userid
       attr_reader :userid
       def initialize(os, userid)
-        @os, @charset = os.split('-')
-        @charset ||= 'US-ASCII'
+        parts = os.split('-')
+        @os = parts[0]
+        @charset = parts[1..-1].join('-')
+        @charset = 'US-ASCII' if @charset.empty?
         @userid = userid
       end
     end
