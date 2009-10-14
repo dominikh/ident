@@ -107,9 +107,6 @@ BareTest.suite("ident") do
     assert "should connect to a server"
     assert "should return a new response"
     assert "should return a new response if the server terminates the connection"
-    assert "an error just for demo" do
-      false
-    end
   end
 
   suite "as an instance" do
