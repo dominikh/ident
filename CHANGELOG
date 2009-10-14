@@ -1,0 +1,7 @@
+2009/10/14
+version 0.0.2
+* fixed a bug in parsing the charset
+* added tests
+
+version 0.0.1
+* initial release
