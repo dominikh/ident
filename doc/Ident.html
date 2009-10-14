@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Ident</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Ident">
+  <h1 class="title">Class: Ident</h1>
+  <div class="section attributes">
+  <h1>Attributes</h1>
+
+  
+    <div class="instance">
+      <h2>Instance Attributes</h2>
+      <table>
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>inbound</span>
+          </td>
+          <td class="readwrite">
+            [<span id='inbound-instance_method'>R</span><span id='inbound=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>inbound</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>ip</span>
+          </td>
+          <td class="readwrite">
+            [<span id='ip-instance_method'>R</span><span id='ip=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>ip</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>outbound</span>
+          </td>
+          <td class="readwrite">
+            [<span id='outbound-instance_method'>R</span><span id='outbound=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>outbound</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>response</span>
+          </td>
+          <td class="readwrite">
+            [<span id='response-instance_method'>R</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>response</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>timeout</span>
+          </td>
+          <td class="readwrite">
+            [<span id='timeout-instance_method'>R</span><span id='timeout=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Returns the value of attribute <tt>timeout</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+      </table>
+    </div>
+  
+</div>
+<div class="section constants">
+  <div class="thisclass">
+  <h1>Constants</h1>
+  <dl>
+    
+      <dt id="KNOWN_ERRORS-constant">KNOWN_ERRORS</dt>
+      <dd>[&quot;INVALID-PORT&quot; &quot;NO-USER&quot; &quot;HIDDEN-USER&quot; &quot;UNKNOWN-ERROR&quot;]</dd>
+    
+  </dl>
+</div>
+
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>initialize</span><span class='args'>(ip = nil, outbound = nil, inbound = nil, timeout = 10)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="see">
+  <h3>See Also:</h3>
+  <dl>
+    <dt></dt>
+    <dd>
+      <span class='desc'>
+        <tt><a href="#request-class_method" title="Ident.request">Ident.request</a></tt>
+      </span>
+    </dd>
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+86
+87
+88
+89</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/ident.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id ip'>ip</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id outbound'>outbound</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id inbound'>inbound</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id timeout'>timeout</span> <span class='op'>=</span> <span class='int'>10</span><span class='rparen'>)</span>
+  <span class='ivar'>@ip</span><span class='comma'>,</span> <span class='ivar'>@outbound</span><span class='comma'>,</span> <span class='ivar'>@inbound</span><span class='comma'>,</span> <span class='ivar'>@timeout</span> <span class='op'>=</span> <span class='id ip'>ip</span><span class='comma'>,</span> <span class='id outbound'>outbound</span><span class='comma'>,</span> <span class='id inbound'>inbound</span><span class='comma'>,</span> <span class='id timeout'>timeout</span>
+  <span class='ivar'>@response</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <h1>Public Class Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#request-class_method" title="request">request</a></span><span class='args'>(ip, outbound, inbound, timeout_after = 10)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+This method connects to an identd at `ip` and queries information for the
+connection `outbound`->`inbound` where `outbound` is the port a connection
+is coming from (usually anything >1024) and `inbound` is the port connected
+to, the port your service is listening on (e.
+</p>
+
+        
+          <p class='returns'>
+            Returns: 
+              <span class='return_types'>
+                 <tt><a href="Ident/Response/USERID.html" title="Response::USERID">Response::USERID</a></tt>
+              </span>
+          </p>
+        
+      </td>
+    </tr>
+  
+</table>
+
+  </div>
+  <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#request-instance_method" title="#request">#request</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+
+  </div>
+<div class="section methoddetails class public">
+  <h1>Public Class Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>request</h3>
+</div><div id="request-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'><tt><a href="Ident/Response/USERID.html" title="Response::USERID">Response::USERID</a></tt></span>
+      <span class='name'>request</span><span class='args'>(ip, outbound, inbound, timeout_after = 10)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+This method connects to an identd at `ip` and queries information for the
+connection `outbound`->`inbound` where `outbound` is the port a connection
+is coming from (usually anything >1024) and `inbound` is the port connected
+to, the port your service is listening on (e.g. 6667 in the case of an
+IRCd)
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="examples">
+  
+    <h3>Example: <small>user A connects to our server on port 23, coming from 123.123.123.123 on port 6789</small></h3>
+    <div class="docstring">
+      <pre class="code"> <span class='const'>Ident</span><span class='period'>.</span><span class='id request'>request</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>123.123.123.123</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='int'>6789</span><span class='comma'>,</span> <span class='int'>23</span><span class='rparen'>)</span></pre>
+    </div>
+  
+</div>
+<div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+    
+      <dt>
+        <span class='type'>[<tt>String</tt>]</span>
+        <span class='name'>ip</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The IP of the ident server
+</p>
+</span>
+      </dd>
+    
+  
+    
+      <dt>
+        <span class='type'>[<tt>Integer</tt>]</span>
+        <span class='name'>outbound</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The port from which the connection is coming
+</p>
+</span>
+      </dd>
+    
+  
+    
+      <dt>
+        <span class='type'>[<tt>Integer</tt>]</span>
+        <span class='name'>inbound</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The port to which was connected
+</p>
+</span>
+      </dd>
+    
+  
+    
+      <dt>
+        <span class='type'>[<tt>Integer</tt>]</span>
+        <span class='name'>timeout_after</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The timeout, defaults to 10 seconds
+</p>
+</span>
+      </dd>
+    
+  
+  </dl>
+</div><div class="return">
+  <h3>Returns:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href="Ident/Response/USERID.html" title="Response::USERID">Response::USERID</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+if we successfully queried the ident server
+</p>
+</span>
+    </dd>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href="Ident/Response/ERROR.html" title="Response::ERROR">Response::ERROR</a></tt>]</span>
+      
+      
+        <span class='name'></span>
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+in case of an error
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+<div class="raise">
+  <h3>Raises:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt>Timeout::Error</tt>]</span>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+In case of a timeout
+</p>
+</span>
+    </dd>
+  
+    <dt>
+      
+        <span class='type'>[<tt>Errno::ECONNREFUSED</tt>]</span>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+If no identd was running at the destination host
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/ident.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id request'>request</span><span class='lparen'>(</span><span class='id ip'>ip</span><span class='comma'>,</span> <span class='id outbound'>outbound</span><span class='comma'>,</span> <span class='id inbound'>inbound</span><span class='comma'>,</span> <span class='id timeout_after'>timeout_after</span> <span class='op'>=</span> <span class='int'>10</span><span class='rparen'>)</span>
+  <span class='id r'>r</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id timeout'>timeout</span><span class='lparen'>(</span><span class='id timeout_after'>timeout_after</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id t'>t</span> <span class='op'>=</span> <span class='const'>TCPSocket</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id ip'>ip</span><span class='comma'>,</span> <span class='int'>113</span><span class='rparen'>)</span>
+    <span class='id t'>t</span><span class='period'>.</span><span class='id puts'>puts</span> <span class='lbracket'>[</span><span class='id outbound'>outbound</span><span class='comma'>,</span> <span class='id inbound'>inbound</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id r'>r</span> <span class='op'>=</span> <span class='id t'>t</span><span class='period'>.</span><span class='id gets'>gets</span>
+    <span class='id t'>t</span><span class='period'>.</span><span class='id close'>close</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># in case the identd just kills our connection
+</span>  <span class='id r'>r</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id outbound'>outbound</span><span class='rbrace'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id inbound'>inbound</span><span class='rbrace'>}</span><span class='tstring_content'>:ERROR:UNKNOWN-ERROR</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id r'>r</span><span class='period'>.</span><span class='id chomp!'>chomp!</span>
+  <span class='const'>Response</span><span class='period'>.</span><span class='id from'>from</span><span class='lparen'>(</span><span class='id r'>r</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div><div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>request</h3>
+</div><div id="request-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>request</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="see">
+  <h3>See Also:</h3>
+  <dl>
+    <dt></dt>
+    <dd>
+      <span class='desc'>
+        <tt><a href="#request-class_method" title="Ident.request">Ident.request</a></tt>
+      </span>
+    </dd>
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+92
+93
+94</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/ident.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id request'>request</span>
+  <span class='ivar'>@response</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id request'>request</span><span class='lparen'>(</span><span class='ivar'>@ip</span><span class='comma'>,</span> <span class='ivar'>@outbound</span><span class='comma'>,</span> <span class='ivar'>@inbound</span><span class='comma'>,</span> <span class='ivar'>@timeout</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Wednesday, October 14 2009 at 04:55:47 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.3 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>

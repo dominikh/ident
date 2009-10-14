@@ -1,0 +1,2 @@
+ident is a simple Ruby library for querying identd servers (RFC 1413).
+For usage see the documentation and and the examples.
