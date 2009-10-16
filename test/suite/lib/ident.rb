@@ -104,12 +104,37 @@ BareTest.suite("ident") do
   end # ::Response
 
   suite ".request" do
-    assert "should connect to a server"
-    assert "should return a new response"
-    assert "should return a new response if the server terminates the connection"
+    assert "should connect to a server" do
+      TCPSocket.expects(:new).with("127.0.0.1", 113).returns(StringIO.new)
+
+      Ident.request("127.0.0.1", 12345, 12345)
+    end
+
+    assert "should return a new response" do
+      io = StringIO.new("0,0:ERROR:UNKNOWN-ERROR")
+      io.expects(:puts)
+      TCPSocket.expects(:new).with("127.0.0.1", 113). returns(io).at_least_once
+
+      Ident.request("127.0.0.1", 12345, 12345).is_a? Ident::Response::BasicResponse
+    end
+
+    assert "should return a new response if the server terminates the connection" do
+      TCPSocket.expects(:new).with("127.0.0.1", 113).returns(StringIO.new).at_least_once
+      Ident.request("127.0.0.1", 12345, 12345).is_a? Ident::Response::ERROR
+    end
   end
 
   suite "as an instance" do
-    assert "should act as a proxy to Ident.request"
+    assert "should act as a proxy to Ident.request" do
+      Ident.expects(:request).with("127.0.0.1", 12345, 6789, 20).returns(true).once
+
+      i = Ident.new
+      i.ip       = "127.0.0.1"
+      i.outbound = 12345
+      i.inbound  = 6789
+      i.timeout  = 20
+
+      i.request
+    end
   end
 end
