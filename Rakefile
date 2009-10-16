@@ -1,5 +1,4 @@
 require 'rake/gempackagetask'
-require 'yard'
 
 VERSION = "0.0.2"
 
@@ -22,6 +21,25 @@ end
 Rake::GemPackageTask.new(spec)do |pkg|
 end
 
-YARD::Rake::YardocTask.new do |t|
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new do |t|
+  end
+rescue LoadError
 end
 
+task :test do
+  begin
+    require "baretest"
+  rescue LoadError => e
+    puts "Could not run tests: #{e}"
+  end
+
+  BareTest.load_standard_test_files(
+                                    :verbose => false,
+                                    :setup_file => 'test/setup.rb',
+                                    :chdir => File.absolute_path("#{__FILE__}/../")
+                                    )
+
+  BareTest.run(:format => "cli", :interactive => false)
+end
