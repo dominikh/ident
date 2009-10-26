@@ -15,6 +15,8 @@ spec = Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.rubyforge_project = "ident"
 
+  s.has_rdoc = 'yard'
+
   s.files = FileList["lib/**/*.rb", "[A-Z]*", "doc/**/*", "examples/**/*"].to_a
 end
 
