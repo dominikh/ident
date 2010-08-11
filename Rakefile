@@ -1,6 +1,6 @@
 require 'rake/gempackagetask'
 
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 
 spec = Gem::Specification.new do |s|
   s.name              = "ident"
@@ -8,16 +8,16 @@ spec = Gem::Specification.new do |s|
   s.description       = s.summary
   s.version           = VERSION
   s.author            = "Dominik Honnef"
-  s.email             = "dominikho@gmx.net"
+  s.email             = "dominikh@fork-bomb.org"
   s.date              = Time.now.strftime "%Y-%m-%d"
   s.require_path      = "lib"
-  s.homepage          = "http://dominikh.fork-bomb.de"
+  s.homepage          = "http://fork-bomb.org"
   s.platform          = Gem::Platform::RUBY
   s.rubyforge_project = "ident"
 
   s.has_rdoc = 'yard'
 
-  s.files = FileList["lib/**/*.rb", "[A-Z]*", "doc/**/*", "examples/**/*"].to_a
+  s.files = FileList["lib/**/*.rb", "[A-Z]*", "examples/**/*"].to_a
 end
 
 Rake::GemPackageTask.new(spec)do |pkg|
