@@ -26,6 +26,7 @@ BareTest.suite("ident") do
       setup do
         @response1 = Ident::Response.from("0, 0:USERID:SYSTEM:YOURID")
         @response2 = Ident::Response.from("0, 0:USERID:SYSTEM-UTF-8:YOURID")
+        @response3 = Ident::Response.from("0, 0 : USERID : SYSTEM-UTF-8 : YOURID")
       end
 
       assert "should contain the userid" do
@@ -47,6 +48,12 @@ BareTest.suite("ident") do
       assert "should not be an error" do
         not @response1.error?
       end
+
+      assert "should strip spaces" do
+        equal("YOURID", @response3.userid)
+        equal("UTF-8",  @response3.charset)
+        equal("SYSTEM", @response3.os)
+      end
     end # An USERID response
 
     suite "An ERROR response" do
@@ -55,6 +62,7 @@ BareTest.suite("ident") do
         @response2 = Ident::Response.from("0, 0:ERROR:NO-USER")
         @response3 = Ident::Response.from("0, 0:ERROR:HIDDEN-USER")
         @response4 = Ident::Response.from("0, 0:ERROR:UNKNOWN-ERROR")
+        @response5 = Ident::Response.from("0, 0 : ERROR : NO-USER")
       end
 
       assert "is an error" do
@@ -85,6 +93,10 @@ BareTest.suite("ident") do
         not @response4.no_user?
         not@response4.hidden_user?
         @response4.unknown_error?
+      end
+
+      assert "should strip spaces" do
+        @response5.no_user?
       end
     end # An ERROR response
 

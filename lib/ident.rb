@@ -73,7 +73,7 @@ class Ident
     # Returns an instance of {USERID} or {ERROR}, depending on the type of
     # reply.
     def self.from(s)
-      ports, type, *addinfo = s.split(':')
+      ports, type, *addinfo = s.split(':').map {|o| o.strip}
       klass = self.const_get(type.to_sym)
       klass.new(*addinfo)
     end
