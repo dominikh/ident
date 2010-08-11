@@ -73,26 +73,34 @@ BareTest.suite("ident") do
         equal("INVALID-PORT", @response1.type)
       end
 
-      assert "knows what kind of error it is" do
-        @response1.invalid_port?
-        not @response1.no_user?
-        not @response1.hidden_user?
-        not @response1.unknown_error?
+      suite "knows its type" do
+        assert "if it is an invalid port" do
+          @response1.invalid_port? &&
+            !@response1.no_user? &&
+            !@response1.hidden_user? &&
+            !@response1.unknown_error?
+        end
 
-        not @response2.invalid_port?
-        @response2.no_user?
-        not @response2.hidden_user?
-        not @response2.unknown_error?
+        assert "if it is an invalid port" do
+          !@response2.invalid_port? &&
+            @response2.no_user? &&
+            !@response2.hidden_user? &&
+            !@response2.unknown_error?
+        end
 
-        not @response3.invalid_port?
-        not @response3.no_user?
-        @response3.hidden_user?
-        not @response3.unknown_error?
+        assert "if it is a hidden user" do
+          !@response3.invalid_port? &&
+            !@response3.no_user? &&
+            @response3.hidden_user? &&
+            !@response3.unknown_error?
+        end
 
-        not @response4.invalid_port?
-        not @response4.no_user?
-        not@response4.hidden_user?
-        @response4.unknown_error?
+        assert "if it is an unknown error" do
+          not @response4.invalid_port?
+          not @response4.no_user?
+          not@response4.hidden_user?
+          @response4.unknown_error?
+        end
       end
 
       assert "should strip spaces" do
