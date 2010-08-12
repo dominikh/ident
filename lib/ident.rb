@@ -1,95 +1,37 @@
+require 'socket'
+require 'timeout'
+
 class Ident
-  require 'socket'
-  require 'timeout'
-
   KNOWN_ERRORS = ["INVALID-PORT" "NO-USER" "HIDDEN-USER" "UNKNOWN-ERROR"]
-  module Response
-    # This is the blankslate response which ensures that both kind of
-    # responses respond to all required methods. You should never have
-    # to work with this class directly.
-    class BasicResponse
-      # Is the response the result of an error?
-      def error?;  false; end
-      def os;      nil;   end
-      def charset; nil;   end
-      def userid;  nil;   end
+  require "ident/response"
 
-      private
-      def self.error_to_method_name(error)
-        (error.downcase.tr('-', '_') + "?").to_sym
-      end
-
-      public
-      KNOWN_ERRORS.each do |e|
-        define_method(error_to_method_name(e)) do
-          false
-        end
-      end
-    end
-
-    class USERID < BasicResponse
-      # the operating system of the user
-      attr_reader :os
-      # the charset on the system, defaults to US-ASCII
-      attr_reader :charset
-      # the userid
-      attr_reader :userid
-      def initialize(os, userid)
-        parts = os.split('-')
-        @os = parts[0]
-        @charset = parts[1..-1].join('-')
-        @charset = 'US-ASCII' if @charset.empty?
-        @userid = userid
-      end
-    end
-
-    # This class gives access to the error returned by an identd. It
-    # defines method for every possible kind of error: invalid_port?
-    # no_user? hidden_user? unknown_error?
-    class ERROR < BasicResponse
-      KNOWN_ERRORS.each do |e|
-        define_method(error_to_method_name(e)) do
-          @type == e
-        end
-      end
-
-      attr_reader :type
-      def initialize(type)
-        @type = type
-      end
-
-      # @see BasicResponse#error?
-      def error?; true; end
-      # Did we specify an invalid port?
-      def invalid_port?; @type == "INVALID-PORT"; end
-      # Is no user known for the given connection specification?
-      def no_user?; @type == "NO-USER"; end
-      # Does the identd hide information from us?
-      def hidden_user?; @type == "HIDDEN-USER"; end
-      # Did an unknown error occur?
-      def unknown_error?; @type == "UNKNOWN-ERROR"; end
-    end
-
-    # Returns an instance of {USERID} or {ERROR}, depending on the type of
-    # reply.
-    def self.from(s)
-      ports, type, *addinfo = s.split(':').map {|o| o.strip}
-      klass = self.const_get(type.to_sym)
-      klass.new(*addinfo)
-    end
-  end
-
+  # @return [String]
   attr_accessor :ip
+
+  # @return [Number]
   attr_accessor :outbound
+
+  # @return [Number]
   attr_accessor :inbound
+
+  # @return [Number]
   attr_accessor :timeout
+
+  # @return [Response::USERID, Response::ERROR]
   attr_reader :response
+
+  # @param (see Ident.request)
   # @see Ident.request
-  def initialize(ip = nil, outbound = nil, inbound = nil, timeout = 10)
-    @ip, @outbound, @inbound, @timeout = ip, outbound, inbound, timeout
+  def initialize(ip = nil, outbound = nil, inbound = nil, timeout_after = 10)
+    @ip, @outbound, @inbound, @timeout = ip, outbound, inbound, timeout_after
     @response = nil
   end
 
+
+  # Calls {Ident.request} using the attributes supplied to the
+  # constructor. The result can be accessed using {#response}
+  #
+  # @return [void]
   # @see Ident.request
   def request
     @response = self.class.request(@ip, @outbound, @inbound, @timeout)
